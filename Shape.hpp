@@ -1,45 +1,29 @@
+#ifndef __SHAPE_HPP__
+#define __SHAPE_HPP__
+
+
 #include <vector>
 #include <iostream>
 
 using namespace std;
 
-template <typename T>
 struct Point{
-    T x, y;
+    double x, y;
 };
 
-template <typename T>
 class Shape{
     private:
-        vector<Point<T> > points;
+        vector<Point> points;
     public:
-        void draw(); //rysuje figurę
+        void draw(int size_x, int size_y); //rysuje figurę w kartezjańskim układzie współrzędnych o rozmiarze sizexsize
 
-        void loadData(istream&);
+        void loadData(istream&); //pobiera dane ze strumienia wejściowego istream
 
-        void scale(T); //skaluje figurę
-        void move(T, T); //przesuwa figurę
-        //void transform(<wektor1>, <wektor2>);
+        void scale(double ratio); //skaluje figurę o ratio
+        void move(double x_offset, double y_offset); //przesuwa figurę o podane wartości na osiach Ox i Oy
+        //void transform(<wektor1>, <wektor2>); //transformuje figurę według podanych wektorów
 };
 
-template<typename T>
-void Shape<T>::draw(){
-    cout << "draw()" << endl;
-}
 
-template<typename T>
-void Shape<T>::loadData(istream& source){
-    string buffer;
-    source >> buffer;
-    cout << buffer << endl;
-}
-
-template<typename T>
-void Shape<T>::scale(T ratio){
-    cout << "scale(" << ratio << ")" << endl;
-}
-
-template<typename T>
-void Shape<T>::move(T x_offset, T y_offset){
-    cout << "move(" << x_offset << ", " << y_offset << ")" << endl;
-}
+double getDouble(istream&);
+#endif
