@@ -21,7 +21,8 @@ class Shape{
 
         void scale(double ratio); //skaluje figurę o ratio
         void move(double x_offset, double y_offset); //przesuwa figurę o podane wartości na osiach Ox i Oy
-        void odbij(); //odbicie lustrzane
+        void flip(); //odbicie lustrzane
+        void colorChange(); //zmienia kolor/znak graficzny rysowanych punktów
 };
 
 #endif

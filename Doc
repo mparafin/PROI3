@@ -1,6 +1,15 @@
-Założenia projektu
-	dane
-	własne
+PROI - Projekt 3 - Zadanie 3.5 Prosty edytor graficzny - Michał Parafiniuk
+
+Treść zadania:
+"Przyjąć następujące założenia:
+	Zaproponować sposób przechowywania punktów.
+	W oparciu o zbiór punktów zaproponować sposoby reprezentacji obiektów 2D
+	Zaproponować podstawowy zestaw operacji, wykonywanych dla obiektów graficznych (np. przesuwanie, skalowanie itd.)"
+
+Założenia projektu:
+Program jest prostym konsolowym edytorem graficznym do figur 2D, przedstawionych za pomocą punktów. Program pozwala nanosić wierzchołki figur na układ współrzędnych kartezjańskich i rysuje prostokąty. Generowany układ kartezjański jest a) przeskalowany tak, żeby figury były jak największe, b) skalowalny w rozmiarze (ma wielkość w pionie i w poziomie zależną od podanych argumentów).
+
+------------------------------
 
 Opis programu ogólny (funkcjonalność itp.)
 
