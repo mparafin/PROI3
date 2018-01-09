@@ -21,9 +21,7 @@ class Shape{
 
         void scale(double ratio); //skaluje figurę o ratio
         void move(double x_offset, double y_offset); //przesuwa figurę o podane wartości na osiach Ox i Oy
-        //void transform(<wektor1>, <wektor2>); //transformuje figurę według podanych wektorów
+        void odbij(); //odbicie lustrzane
 };
 
-
-double getDouble(istream&);
 #endif

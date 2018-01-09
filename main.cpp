@@ -15,7 +15,7 @@ int main(){
         cout << "Shit!" << endl;
         return 1;
     }
-    testShape.draw(20, 20);
+    testShape.draw(100, 100);
     //getDouble(input);
     return 0;
 }
