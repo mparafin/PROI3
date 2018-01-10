@@ -15,7 +15,7 @@ int main(){
         cout << "Shit!" << endl;
         return 1;
     }
-    testTable.draw(100, 100);
-    //getDouble(input);
+    testTable.draw(100, 20);
+
     return 0;
 }

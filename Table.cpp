@@ -52,11 +52,8 @@ void Table::draw(int size_x, int size_y){
         if(j == size_y/2) cout << " " << maxX;
         cout << "\n";
     }
-
+    cout << endl;
 }
-
-
-
 
 double getDouble(istream& input){
     string buffer;
@@ -90,6 +87,7 @@ void Table::addShape(const char* filename){ // dodaje nowy kształt do tablicy, 
         throw;
     }
 
+    //wczytanie współrzędnych kolejnych punktów i stworzenie buforowego kształtu
     Shape nascentShape;
     for(int i=0; i<number_of_points; i++){
         
@@ -111,5 +109,5 @@ void Table::addShape(const char* filename){ // dodaje nowy kształt do tablicy, 
         cout << temp.y << ")" <<endl;
         nascentShape.addPoint(temp);
     }
-    shapes.push_back(nascentShape);
+    shapes.push_back(nascentShape); //dodanie kształtu do tabeli
 }
