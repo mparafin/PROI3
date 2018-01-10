@@ -1,21 +1,21 @@
 #include <iostream>
 #include <fstream>
 #include "Shape.hpp"
+#include "Table.hpp"
 
 using namespace std;
 
 
 int main(){
-    Shape testShape;
-    ifstream input("plik.txt");
+    Table testTable;
     try{
-        testShape.loadData(input);
+        testTable.addShape("plik.txt");
     }
     catch(...){
         cout << "Shit!" << endl;
         return 1;
     }
-    testShape.draw(100, 100);
+    testTable.draw(100, 100);
     //getDouble(input);
     return 0;
 }

@@ -14,15 +14,19 @@ struct Point{
 class Shape{
     private:
         vector<Point> points;
+        char color;
     public:
-        void draw(int size_x, int size_y); //rysuje figurę w kartezjańskim układzie współrzędnych o rozmiarze sizexsize
+        Shape() { this->color = '+'; }
 
-        void loadData(istream&); //pobiera dane ze strumienia wejściowego istream
+        char getColor(){ return color; }
+        vector<Point> getPoints(){ return points; }
+        void addPoint(Point new_point) { points.push_back(new_point); }
 
         void scale(double ratio); //skaluje figurę o ratio
         void move(double x_offset, double y_offset); //przesuwa figurę o podane wartości na osiach Ox i Oy
-        void flip(); //odbicie lustrzane
-        void colorChange(); //zmienia kolor/znak graficzny rysowanych punktów
+        void flipVerticaly(); //odbicie lustrzane w pionie względem osi poziomej przechodzącej przez środek figury
+        void flipHorizontally(); //odbicie lustrzane w poziomie względem osi pionowej przechodzącej przez środek figury
+        void colorChange(char new_color) { color = new_color; } //zmienia "kolor", czyli znak graficzny rysowanych punktów
 };
 
 #endif
