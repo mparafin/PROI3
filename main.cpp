@@ -10,12 +10,16 @@ int main(){
     Table testTable;
     try{
         testTable.addShape("plik.txt");
+        testTable.addShape("ramka.txt");
     }
     catch(...){
         cout << "Shit!" << endl;
         return 1;
     }
-    testTable.draw(100, 20);
+    testTable.draw(20, 20);
+    vector<Shape>* temp = testTable.getShapes();
+    (*temp)[0].flipVertically();
+    testTable.draw(20, 20);
 
     return 0;
 }
