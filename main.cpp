@@ -18,7 +18,7 @@ int main(){
     }
     testTable.draw(20, 20);
     vector<Shape>* temp = testTable.getShapes();
-    (*temp)[0].flipVertically();
+    (*temp)[0].flipHorizontally();
     testTable.draw(20, 20);
 
     return 0;
