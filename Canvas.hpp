@@ -1,11 +1,11 @@
-#ifndef __TABLE_HPP__
-#define __TABLE_HPP__
+#ifndef __CANVAS_HPP__
+#define __CANVAS_HPP__
 
 #include <vector>
 
 struct Shape;
 
-class Table{
+class Canvas{
     private:
         std::vector<Shape> shapes;
     public:

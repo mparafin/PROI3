@@ -4,13 +4,13 @@
 #include <vector>
 #include <cmath>
 
-#include "Table.hpp"
+#include "Canvas.hpp"
 #include "Shape.hpp"
 
 using namespace std;
 
 
-void Table::draw(int size_x, int size_y, bool scaled){
+void Canvas::draw(int size_x, int size_y, bool scaled){
 
     //stworzenie tablicy buforowej, na której rysowany będzie układ i figura oraz wypełnienie tej tablicy spacjami
     char** table = new char* [size_x+1];
@@ -83,7 +83,7 @@ double getDouble(istream& input){
     return stod(buffer);
 }
 
-void Table::addShape(const char* filename){ // dodaje nowy kształt do tablicy, wczytując jego dane z pliku
+void Canvas::addShape(const char* filename){ // dodaje nowy kształt do tablicy, wczytując jego dane z pliku
     int number_of_points=-1;
     string buffer;
     ifstream source;
