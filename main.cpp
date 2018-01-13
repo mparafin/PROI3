@@ -13,6 +13,7 @@ int main(){
     Interface program; //inicjalizacja interfejsu
     vector<Canvas> allCanvases; //stworzenie wektora przechowującego wszystkie tablice
     Canvas defaultCanvas; //stworzenie domyślnej tablicy
+    defaultCanvas.addShape("plik.txt");
     allCanvases.push_back(defaultCanvas); //dodanie jej do wektora
 
     //pętla programu

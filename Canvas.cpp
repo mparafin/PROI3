@@ -117,6 +117,7 @@ void Canvas::addShape(const char* filename){ // dodaje nowy kształt do tablicy,
         }
         catch(...){
             cout << "Check input file validity! (Argument x of point" << i+1 << ")" << endl;
+            throw;
         }
 
         try{
@@ -124,8 +125,15 @@ void Canvas::addShape(const char* filename){ // dodaje nowy kształt do tablicy,
         }
         catch(...){
             cout << "Check input file validity! (Argument y of point" << i+1 << ")" << endl;
+            throw;
         }
         nascentShape.addPoint(temp);
     }
     shapes.push_back(nascentShape); //dodanie kształtu do tabeli
+    return;
+}
+
+void Canvas::addShape(Shape new_shape){
+    shapes.push_back(new_shape);
+    return;
 }

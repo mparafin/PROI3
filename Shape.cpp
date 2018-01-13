@@ -6,9 +6,20 @@
 using namespace std;
 
 void Shape::scale(double ratio){
+	double minX = points[0].x, minY = points[0].y;
+	for(int i=0; i<points.size(); i++){
+		if( points[i].x < minX) minX = points[i].x;
+		if( points[i].y < minY) minY = points[i].y;
+	}
+
     for(int i=0; i<points.size(); i++){
+		points[i].x -= minX;
 		points[i].x *= ratio;
+		points[i].x += minX;
+
+		points[i].y -= minY;
 		points[i].y *= ratio;
+		points[i].y += minY;
 	}
 	return;
 }
