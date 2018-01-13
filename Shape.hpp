@@ -20,7 +20,7 @@ class Shape{
 
         char getColor(){ return color; }
         vector<Point> getPoints(){ return points; }
-        void addPoint(Point new_point) { points.push_back(new_point); }
+        void addPoint(Point& new_point) { points.push_back(new_point); }
 
         void scale(double ratio); //skaluje figurę o ratio
         void move(double x_offset, double y_offset); //przesuwa figurę o podane wartości na osiach Ox i Oy
