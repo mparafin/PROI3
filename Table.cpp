@@ -10,7 +10,7 @@
 using namespace std;
 
 
-void Table::draw(int size_x, int size_y){
+void Table::draw(int size_x, int size_y, bool scaled){
 
     //stworzenie tablicy buforowej, na której rysowany będzie układ i figura oraz wypełnienie tej tablicy spacjami
     char** table = new char* [size_x+1];
@@ -27,29 +27,49 @@ void Table::draw(int size_x, int size_y){
 
     //uzyskanie maksymalnych wartości x i y punktów ze wszystkich figur
     double maxX=0, maxY=0;
-    for(int j=0; j<shapes.size(); j++){
-        for(int i=0; i<shapes[j].getPoints().size(); i++){
-            if(abs(shapes[j].getPoints()[i].x) > maxX) maxX = abs(shapes[j].getPoints()[i].x);
-            if(abs(shapes[j].getPoints()[i].y) > maxY) maxY = abs(shapes[j].getPoints()[i].y);
+    if(scaled){
+        for(int j=0; j<shapes.size(); j++){
+            for(int i=0; i<shapes[j].getPoints().size(); i++){
+                if(abs(shapes[j].getPoints()[i].x) > maxX) maxX = abs(shapes[j].getPoints()[i].x);
+                if(abs(shapes[j].getPoints()[i].y) > maxY) maxY = abs(shapes[j].getPoints()[i].y);
+            }
         }
     }
-    double x_scale = (size_x/2)/maxX;
-    double y_scale = (size_y/2)/maxY;
 
+    //ustawienie skali
+    double x_scale, y_scale;
+    if(scaled){
+        x_scale = (size_x/2)/maxX;
+        y_scale = (size_y/2)/maxY;
+    }
+
+    //"drukowanie" punktów na tablicę
     for(int j=0; j<shapes.size(); j++){
         for(int i=0; i<shapes[j].getPoints().size(); i++){
-            int x = round( shapes[j].getPoints()[i].x * x_scale ) + size_x/2;
-            int y = round( shapes[j].getPoints()[i].y * y_scale ) + size_y/2;
-            table[x][y] = shapes[j].getColor();
+            int x, y;
+            if(scaled){
+                x = round( shapes[j].getPoints()[i].x * x_scale  + size_x/2);
+                y = round( shapes[j].getPoints()[i].y * y_scale  + size_y/2);
+                table[x][y] = shapes[j].getColor();
+            }
+            else{
+                x = round( shapes[j].getPoints()[i].x + size_x/2);
+                y = round( shapes[j].getPoints()[i].y + size_y/2);
+                if(x <= size_x && x >= 0 && y <= size_y && y >= 0) table[x][y] = shapes[j].getColor();
+            }
         }
     }
 
     //wypisanie tablicy na główne wyjście
     for(int i=0; i<size_x/2; i++) cout << ' ';
-    cout << maxY << endl;
+    if(scaled) cout << maxY << endl;
+    else cout << size_y/2 << endl;
     for(int j=size_y; j>=0; j--){
         for(int i=0; i<size_x+1; i++) cout << table[i][j];
-        if(j == size_y/2) cout << " " << maxX;
+        if(j == size_y/2){
+            if(scaled) cout << " " << maxX;
+            else cout << " " << size_x/2;
+        }
         cout << "\n";
     }
     cout << endl;
@@ -98,7 +118,6 @@ void Table::addShape(const char* filename){ // dodaje nowy kształt do tablicy, 
         catch(...){
             cout << "Check input file validity! (Argument x of point" << i+1 << ")" << endl;
         }
-        cout << "Point" << i << ": (" <<temp.x << ", ";
 
         try{
             temp.y = getDouble(source);
@@ -106,7 +125,6 @@ void Table::addShape(const char* filename){ // dodaje nowy kształt do tablicy, 
         catch(...){
             cout << "Check input file validity! (Argument y of point" << i+1 << ")" << endl;
         }
-        cout << temp.y << ")" <<endl;
         nascentShape.addPoint(temp);
     }
     shapes.push_back(nascentShape); //dodanie kształtu do tabeli

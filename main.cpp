@@ -16,10 +16,10 @@ int main(){
         cout << "Shit!" << endl;
         return 1;
     }
-    testTable.draw(20, 20);
+    testTable.draw(20, 20, false);
     vector<Shape>* temp = testTable.getShapes();
-    (*temp)[0].flipHorizontally();
-    testTable.draw(20, 20);
+    (*temp)[0].scale(2);
+    testTable.draw(20, 20, false);
 
     return 0;
 }
