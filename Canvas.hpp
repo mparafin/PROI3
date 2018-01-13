@@ -2,8 +2,8 @@
 #define __CANVAS_HPP__
 
 #include <vector>
+#include "Shape.hpp"
 
-struct Shape;
 
 class Canvas{
     private:

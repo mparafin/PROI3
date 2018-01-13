@@ -1,25 +1,25 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include "Shape.hpp"
-#include "Table.hpp"
+#include "Canvas.hpp"
+#include "Interface.hpp"
 
 using namespace std;
 
 
 int main(){
-    Table testTable;
-    try{
-        testTable.addShape("plik.txt");
-        testTable.addShape("ramka.txt");
-    }
-    catch(...){
-        cout << "Shit!" << endl;
-        return 1;
-    }
-    testTable.draw(20, 20, false);
-    vector<Shape>* temp = testTable.getShapes();
-    (*temp)[0].scale(2);
-    testTable.draw(20, 20, false);
+    //inicjalizacja programu
+    Interface program; //inicjalizacja interfejsu
+    vector<Canvas> allCanvases; //stworzenie wektora przechowującego wszystkie tablice
+    Canvas defaultCanvas; //stworzenie domyślnej tablicy
+    allCanvases.push_back(defaultCanvas); //dodanie jej do wektora
+
+    //pętla programu
+    while( program.menu(allCanvases) );
+
+    //vector<Shape>* temp = defaultCanvas.getShapes();
+    //(*temp)[0].scale(2);
 
     return 0;
 }
