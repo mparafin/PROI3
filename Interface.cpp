@@ -344,15 +344,15 @@ void Interface::showCanvasShapes(Canvas& canvas){
 
 void Interface::addShapeToCanvas(Canvas& canvas){
     string buffer;
-    cout << "Podaj nazwę pliku, z którego chcesz wczytać kształt (0 żeby wyjść): ";
+    cout << "Podaj nazwę pliku, z którego chcesz wczytać kształt (pozostaw puste żeby wyjść): ";
     while(1){
         try{
             getline(cin, buffer);
             if(buffer.size() == 0) return;
             canvas.addShape( buffer.c_str() );
         }
-        catch(char const*){
-            cout << "Popraw plik lub podaj poprawną nazwę (0 żeby wyjść): ";
+        catch(...){
+            cout << "Popraw plik lub podaj poprawną nazwę (pozostaw puste żeby wyjść): ";
             continue;
         }
         break;
@@ -364,7 +364,8 @@ void Interface::removeShape(Canvas& canvas){
     vector<Shape>* allShapesPointer = canvas.getShapes();
     cout << "Który kształt chciałbyś usunąć? (0 żeby wyjść)" << endl;
     int input = chooseShape(canvas);
-    if(input != -1) allShapesPointer->erase(allShapesPointer->begin() + input);
+    if (input == -1) return;
+    else allShapesPointer->erase(allShapesPointer->begin() + input);
     cout << "Kształt usunięty!" << endl;
     return;
 }
@@ -381,6 +382,8 @@ void Interface::modifyShape(Canvas& canvas){
     vector<Shape>* allShapesPointer = canvas.getShapes();
     cout << "Wybierz jeden z kształtów (0 żeby wyjść): " << endl;
     int input = chooseShape(canvas);
+    if (input == -1) return;
+
     Shape* opPointer = &(*allShapesPointer)[input];
 
     cout << "Wybierz operację:\n1. Przesuń.\n2. Przeskaluj.\n3. Odbij w pionie.\n4. Odbij w poziomie.\n5. Zmień kolor.\n0. Wróć do modyfikacji tablicy." << endl;
